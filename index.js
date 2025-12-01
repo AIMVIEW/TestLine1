@@ -24,6 +24,10 @@ app.post("/webhook", function (req, res) {
   res.send("HTTP POST request sent to the webhook URL!");
   // If the user sends a message to your bot, send a reply message
   if (req.body.events[0].type === "message") {
+    if (req.body.events[0] === "you"){
+        t1 = "good"
+        t2 = "keep looking then"
+    }
     // You must stringify reply token and message data to send to the API server
     const dataString = JSON.stringify({
       // Define reply token
@@ -32,11 +36,11 @@ app.post("/webhook", function (req, res) {
       messages: [
         {
           type: "text",
-          text: "Hello kid",
+          text: t1 ||"Hello kid",
         },
         {
           type: "text",
-          text: "What u lookin at",
+          text: t2 || "What u lookin at",
         },
       ],
     });
