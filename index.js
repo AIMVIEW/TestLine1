@@ -16,6 +16,10 @@ app.get("/", (req, res) => {
   res.sendStatus(200);
 });
 
+app.listen(PORT, () => {
+  console.log(`listening at http://localhost:${PORT}`);
+});
+
 app.post("/webhook", function (req, res) {
   res.send("HTTP POST request sent to the webhook URL!");
   // If the user sends a message to your bot, send a reply message
